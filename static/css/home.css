@@ -1,0 +1,105 @@
+* {
+    margin: 0 auto;
+}
+
+.pg_header {
+    height: 48px;
+    background-color: rgb(99, 110, 121);
+}
+
+.pg_content .menu {
+    width: 200px;
+    position: fixed;
+    top: 50px;
+    bottom: 0;
+    float: left;
+    background-color: rgb(130, 204, 223);
+}
+
+.menu .menu_op li{
+    width: 190px;
+    height: 36px;
+    position: relative;
+    left: -40px;
+    list-style: none;
+    padding: 5px;
+    text-align: left;
+    font-size: 1.6em;
+}
+
+.menu .menu_op .selected {
+    background:  rgb(60, 202, 238);
+}
+
+.menu .menu_op li a {
+    color: black;
+    text-decoration: none;
+}
+
+.menu .menu_op li a:hover {
+    font-size: 1.1em;
+}
+
+
+.pg_content .content {
+    min-width: 960px;
+    position: fixed;
+    top: 50px;
+    right: 0;
+    bottom: 0;
+    left: 202px;
+    float: left;
+    background-color: rgb(130, 204, 223);
+    overflow: auto;
+}
+
+.pg_content .content .title {
+    height: 46px;
+    padding: 0 8px;
+    background-color: rgb(60, 202, 238);
+    font-size: 2.2em;
+}
+
+.pg_content .content .title select {
+    position: relative;
+    top: -10px;
+    height: 40px;
+}
+
+.pg_content .content .way {
+    height: 38px;
+    border: 0;
+    position: relative;
+    top: -10px;
+    font-size: 1rem;
+}
+
+.pg_content .content .sub {
+    height: 40px;
+    width: 48px;
+    border: 0;
+    position: relative;
+    top: -10px;
+}
+
+.pg_content .content .sub:active {
+    background: rgb(60, 202, 238);
+}
+
+
+.pg_content .content .goods table {
+    width: 100%;
+    height: 100px;
+    font-size: 1.6em;
+    text-align: center;
+    border: 2px solid greenyellow;
+}
+
+table, th, td {
+    border: 2px solid greenyellow;
+    border-collapse: collapse;
+}
+
+
+
+
