@@ -78,23 +78,23 @@ def delete_good(g):
 # g.set_gname("百事可乐")
 # g.set_gprice(3.00)
 # g.set_gnum(95)
-# add_good(g)
+# print(add_good(g))
 # print(get_all())
 
 # 更新商品
 # g = goods.good()
-# g.set_gid(1003)
-# g.set_gname("百事可乐")
+# g.set_gid(1008)
+# g.set_gname("茉莉花茶")
 # g.set_gprice(3.00)
 # g.set_gnum(80)
-# add_good(g)
+# update_good(g)
 # print(get_all())
 
 #删除商品
-g = goods.good()
-g.set_gid(1004)
-delete_good(g)
-print(get_all())
+# g = goods.good()
+# g.set_gid(1004)
+# delete_good(g)
+# print(get_all())
 
 
 
