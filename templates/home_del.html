@@ -13,21 +13,19 @@
         <div class="pg_content">
             <div class="menu">
                 <ol class="menu_op">
-                    <li class="selected"><a href="home.html">查询商品</a></li>
+                    <li><a href="home.html">查询商品</a></li>
                     <li><a href="home_add.html">增加商品</a></li>
                     <li><a href="home_upd.html">修改商品</a></li>
-                    <li><a href="home_del.html">删除商品</a></li>
+                    <li class="selected"><a href="home_del.html">删除商品</a></li>
                 </ol>
             </div>
             <div class="content">
                 <div class="title">
-                    <form action="/home.html" method="POST">
+                    <form action="/home_del.html" method="POST">
                         <select name="selected">
-                            <option value="get_all">查询所有</option>
-                            <option value="get_byid">通过ID查询</option>
-                            <option value="get_byname">通过名称查询</option>
+                            <option value="get_byid">通过ID删除</option>
                         </select>
-                        <input class="way" name="way" type="text"><button class="sub" type="submit">查询</button>
+                        <input class="way" name="gid" type="text"><button class="sub" type="submit">删除</button>
                     </form>
                 </div>
                 <div class="goods">
