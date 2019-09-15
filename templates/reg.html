@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <title>注册界面</title>
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    
+</head>
+
+<body>
+    <canvas id="canvas" style="position: absolute; z-index: 0"></canvas>
+    <div id="reg_frame">
+        <p id="image_logo"><img src="photos/title.jpg" alt="Logo"></p>
+        <form action="">
+            <p class="row"><label class="label_input">用户名</label><input type="text" id="username" class="text_field"/></p>
+            <p class="row"><label class="label_input">密码</label><input type="password" id="password" class="text_field"/></p>
+            <p class="row"><label class="label_input">确认密码</label><input type="password" id="password" class="text_field"/></p>
+            <p class="row"><label class="label_input">邮箱</label><input type="email" id="email" class="text_field"/></p>
+            <div id="reg_control">
+                <input type="button" id="btn_reg" value="注册" onclick=""/>
+                <input type="button" id="btn_login" value="返回登录" onclick="window.location.href='login.html'"/>    
+
+            </div>     
+        </form>
+        
+    </div>
+
+    <script src="js/index.js"></script>
+
+</body>
+
+</html>
