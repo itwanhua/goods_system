@@ -1,5 +1,8 @@
+#!/etc/bin/python3
+# -*- coding: utf-8 -*-
+
 from flask import Flask, render_template, request
-import good_operation, goods
+import good_operation, goods, users
 
 app = Flask(__name__)
 
@@ -94,6 +97,20 @@ def home_del():
         good_operation.delete_good(g)
         gs = (gs, )
         return render_template("home_del.html", gs = gs)
+
+
+@app.route("/", methods=["GET", "POST"])
+def login():
+    if request.method == "GET":
+        return render_template("login.html")
+    elif request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+        row = users.login_check(username, password)
+        if row:
+            return render_template("home.html")
+        else:
+            return "登陆失败"
 
 
 
