@@ -7,9 +7,83 @@
     background-color: rgb(99, 110, 121);
 }
 
+.pg_header h2 {
+    width: 260px;
+    position: relative;
+    top:8px;
+    left: 2px;
+    float: left;
+}
+
+.pg_header .user {
+    height: 40px;
+    width: 140px;
+    position: relative;
+    top: 4px;
+    right: 10px;
+    float: right;
+}
+
+.pg_header .user .user_head {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: url("../images/head.jpg");
+    background-size: 100%;
+    border: 0;
+
+}
+
+.pg_header .user:hover .user_menu {
+    display: block;
+    position: relative;
+    top: 0;
+}
+
+.pg_header .user .user_menu:hover {
+    display: block
+}
+
+.pg_header .user:hover .user_menu a {
+    text-decoration: none;
+    color: slategrey;
+}
+
+.pg_header .user:hover .user_menu a:hover {
+    color: black;
+}
+
+
+.pg_header .user:focus .user_menu {
+    display: block;
+    position: relative;
+    top: 0;
+}
+
+.pg_header .user_menu {
+    display: none;
+    background: white;
+    float: right;
+    position: relative;
+    z-index: 10;
+    right: 20px;
+    top: 40px;
+}
+
+.pg_header .user_menu li {
+    position: relative;
+    left: -20px;
+    list-style: none;
+    font-size: 1.2em;
+    
+}
+
+
+
 .pg_content .menu {
     width: 200px;
     position: fixed;
+    z-index: 0;
     top: 50px;
     bottom: 0;
     float: left;

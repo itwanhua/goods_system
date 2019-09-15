@@ -1,0 +1,163 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  html, body {
+    height: 100%;
+  }
+  
+  body {
+    background: #000;
+  }
+  
+  canvas {
+    display: block;
+    cursor: crosshair;
+  }
+
+#login_frame, #reg_frame {
+    width: 400px;
+    height: 260px;
+    padding: 13px;
+
+    position: absolute;
+    z-index: 1px;
+    left: 50%;
+    top: 50%;
+
+    margin-left: -200px;
+    margin-top: -250px;
+
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 10px;
+    text-align: center;
+}
+
+form p > * {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* #image_logo {
+    margin-top: 22px;
+    margin-bottom: 20px;
+} */
+
+#image_logo > img {
+    margin-top: 22px;
+    margin-bottom: 20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    filter: opacity(0.6);
+}
+
+.row {
+    margin-bottom: 20px;
+}
+
+.label_input {
+    font-size: 14px;
+    font-family: 宋体;
+
+    width: 65px;
+    height: 28px;
+
+    line-height: 28px;
+    text-align: center;
+
+    color: white;
+    background-color: rgba(141, 138, 138, 0.4);
+
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.text_field {
+    width: 278px;
+    height: 28px;
+
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: 0;
+
+    background-color: rgba(194, 193, 193, 0.4);
+}
+
+#btn_login {
+    font-size: 14px;
+    font-family: 宋体;
+ 
+    width: 100px;
+    height: 28px;
+
+    line-height: 28px;
+    text-align: center;
+
+    color: white;
+    background-color: rgba(141, 138, 138, 0.4);
+
+    border-radius: 6px;
+    border: 0;
+
+    float: left;
+}
+
+#btn_login:hover, #btn_reg:hover {
+    font-size: 1.1em;
+}
+
+#btn_reg {
+    font-size: 14px;
+    font-family: 宋体;
+ 
+    width: 100px;
+    height: 28px;
+
+    line-height: 28px;
+    text-align: center;
+
+    color: white;
+    background-color: rgba(141, 138, 138, 0.4);
+
+    border-radius: 6px;
+    border: 0;
+
+    float: right;
+}
+
+
+#pass_login {
+    font-size: 12px;
+    color: white;
+    text-decoration: none;
+
+    position: relative;
+    float: right;
+    top: 10px;
+}
+
+#pass_login:hover {
+    color: blue;
+    text-decoration: underline;
+}
+
+#forget_password {
+    font-size: 12px;
+    color: white;
+    text-decoration: none;
+
+    position: relative;
+    float: left;
+    top: 10px;
+}
+
+#forget_password:hover {
+    color: blue;
+    text-decoration: underline;
+}
+
+#login_control, #reg_control {
+    padding: 0 28px;
+}
