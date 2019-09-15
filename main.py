@@ -37,7 +37,13 @@ def main():
             opf = input("请输入查询菜单：")
             if opf == "1":
                 rows = good_operation.get_all()
-                print(rows)
+                print("-"*40)
+                print("{:<10}{:<10}{:<10}{:<10}".format("ID", "名称", "单价", "数量"))
+                print("-"*40)
+                for one in rows:
+                    print("{:<10}{:<10}{:<13}{:<10}".format(one[0], one[1], one[2], one[3]))
+                print("-"*40)
+
 
             elif opf == "2":
                 try:
@@ -47,25 +53,33 @@ def main():
                     continue
                 g = goods.good()
                 g.set_gid(gid)
-                row = good_operation.get_byid(s)
-                print(row)
+                row = good_operation.get_byid(g)
+                print("-"*40)
+                print("{:<10}{:<10}{:<10}{:<10}".format("ID", "名称", "单价", "数量"))
+                print("-"*40)
+                print("{:<10}{:<10}{:<13}{:<10}".format(row[0], row[1], row[2], row[3]))
+                print("-"*40)
 
             elif opf == "3":
                 name = input("请输入商品名称：")
                 g = goods.good()
                 g.set_gname(name)
-                row = good_operation(g)
-                print(row)
+                row = good_operation.get_byname(g)
+                print("-"*40)
+                print("{:<10}{:<10}{:<10}{:<10}".format("ID", "名称", "单价", "数量"))
+                print("-"*40)
+                print("{:<10}{:<10}{:<13}{:<10}".format(row[0], row[1], row[2], row[3]))
+                print("-"*40)
 
             else:
                 print("输入有误！")
 
         elif op == "3":
             try:
-                gid = int(input("请输入商品ID："))
-                name = input("请输入商品名称：")
-                price = float(input("请输入商品单价："))
-                num = int(input("请输入商品数量："))
+                gid = int(input("请输入要修改的商品ID："))
+                name = input("请输入修改后商品名称：")
+                price = float(input("请输入修改后商品单价："))
+                num = int(input("请输入修改后商品数量："))
             except:
                 print("输入有误！")
                 continue
