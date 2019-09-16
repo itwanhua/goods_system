@@ -16,9 +16,27 @@
     cursor: crosshair;
   }
 
-#login_frame, #reg_frame {
+#login_frame {
     width: 400px;
     height: 260px;
+    padding: 13px;
+
+    position: absolute;
+    z-index: 1px;
+    left: 50%;
+    top: 50%;
+
+    margin-left: -200px;
+    margin-top: -250px;
+
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 10px;
+    text-align: center;
+}
+
+#reg_frame {
+    width: 400px;
+    height: 460px;
     padding: 13px;
 
     position: absolute;
@@ -160,4 +178,18 @@ form p > * {
 
 #login_control, #reg_control {
     padding: 0 28px;
+}
+
+#login_control .feedback {
+    display: inline-block;
+    width: 100px;
+    height: 24px;
+    color: red;
+}
+
+#reg_control .feedback {
+    display: inline-block;
+    width: 100px;
+    height: 24px;
+    color: greenyellow;
 }
