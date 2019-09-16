@@ -10,10 +10,15 @@
         <div class="pg_header">
             <h2>商品信息管理系统</h2>
             <div class="user"><img class="user_head">
+                {% if username %}
+                    <p>{{ username }}</p>
+                {% else %}
+                    <p>未登录</p>
+                {% endif %}
                 <div class="user_menu">
                     <ul>
                         <li><a href="#">个人中心</a></li>
-                        <li><a href="login.html">退出登录</a></li>
+                        <li><a href="/login">退出登录</a></li>
                     </ul>
                 </div>
             </div>
@@ -21,15 +26,15 @@
         <div class="pg_content">
             <div class="menu">
                 <ol class="menu_op">
-                    <li class="selected"><a href="home.html">查询商品</a></li>
-                    <li><a href="home_add.html">增加商品</a></li>
-                    <li><a href="home_upd.html">修改商品</a></li>
-                    <li><a href="home_del.html">删除商品</a></li>
+                    <li class="selected"><a href="/home">查询商品</a></li>
+                    <li><a href="/home_add">增加商品</a></li>
+                    <li><a href="/home_upd">修改商品</a></li>
+                    <li><a href="/home_del">删除商品</a></li>
                 </ol>
             </div>
             <div class="content">
                 <div class="title">
-                    <form action="/home.html" method="POST">
+                    <form action="/home" method="POST">
                         <select name="selected">
                             <option value="get_all">查询所有</option>
                             <option value="get_byid">通过ID查询</option>

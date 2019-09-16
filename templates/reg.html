@@ -4,31 +4,31 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width initial-scale=1.0">
     <title>注册界面</title>
-    <link rel="stylesheet" type="text/css" href="css/login.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
 
-    
 </head>
 
 <body>
     <canvas id="canvas" style="position: absolute; z-index: 0"></canvas>
     <div id="reg_frame">
-        <p id="image_logo"><img src="photos/title.jpg" alt="Logo"></p>
-        <form action="">
-            <p class="row"><label class="label_input">用户名</label><input type="text" id="username" class="text_field"/></p>
-            <p class="row"><label class="label_input">密码</label><input type="password" id="password" class="text_field"/></p>
-            <p class="row"><label class="label_input">确认密码</label><input type="password" id="password" class="text_field"/></p>
-            <p class="row"><label class="label_input">邮箱</label><input type="email" id="email" class="text_field"/></p>
+        <p id="image_logo"><img src="../static/images/title.jpg" alt="Logo"></p>
+        <form action="/reg" method="POST">
+            <p class="row"><label class="label_input">用户名</label><input type="text" id="username" name="username" class="text_field"/></p>
+            <p class="row"><label class="label_input">密码</label><input type="password" id="password" name="password" class="text_field"/></p>
+            <p class="row"><label class="label_input">确认密码</label><input type="password" id="password1" class="text_field"/></p>
+            <p class="row"><label class="label_input">手机号</label><input type="text" id="phone" name="phone" class="text_field"/></p>
+            <p class="row"><label class="label_input">邮箱</label><input type="email" id="email" name="email" class="text_field"/></p>
             <div id="reg_control">
-                <input type="button" id="btn_reg" value="注册" onclick=""/>
-                <input type="button" id="btn_login" value="返回登录" onclick="window.location.href='login.html'"/>    
+                <input type="submit" id="btn_reg" value="注册"/>
+                <p class="feedback">{{ feedback }}</p>
+                <a href="/login"><input type="button" id="btn_login" value="返回登录"/></a>
 
             </div>     
         </form>
         
     </div>
 
-    <script src="js/index.js"></script>
+    <script src="{{url_for('static', filename='js/index.js')}}"></script>
 
 </body>
 
