@@ -96,7 +96,7 @@
     top: 50px;
     bottom: 0;
     float: left;
-    background-color: rgb(130, 204, 223);
+    background-color:  rgb(184, 206, 228);
 }
 
 .menu .menu_op li{
@@ -111,7 +111,7 @@
 }
 
 .menu .menu_op .selected {
-    background:  rgb(60, 202, 238);
+    background:  rgb(212, 235, 253);
 }
 
 .menu .menu_op li a {
@@ -132,16 +132,16 @@
     bottom: 0;
     left: 202px;
     float: left;
-    background-color: rgb(130, 204, 223);
+    background-color:rgb(184, 206, 228);
     overflow: auto;
 }
 
 .pg_content .content .title {
     height: 46px;
     padding: 0 8px;
-    background-color: rgb(60, 202, 238);
+    background-color: rgb(212, 235, 253);
     font-size: 2.2em;
-    min-width: 1200px;
+    min-width: 960px;
 }
 
 .pg_content .content .title select {
@@ -152,6 +152,7 @@
 
 .pg_content .content .way {
     padding-left: 6px;
+    width: 140px;
     height: 38px;
     border: 0;
     position: relative;
@@ -200,6 +201,7 @@ table, th, td {
 .goods_info_input {
     padding-left: 6px;
     height: 38px;
+    width: 140px;
     border: 0;
     position: relative;
     top: -10px;
@@ -216,6 +218,9 @@ table, th, td {
 }
 
 
-
+/* 输入框右侧提示样式 */
+span {
+    color:white;
+}
 
 
