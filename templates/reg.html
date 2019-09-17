@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width initial-scale=1.0">
     <title>注册界面</title>
     <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
-
+    <script src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/login.js')}}"></script>
 </head>
 
 <body>
     <canvas id="canvas" style="position: absolute; z-index: 0"></canvas>
     <div id="reg_frame">
         <p id="image_logo"><img src="../static/images/title.jpg" alt="Logo"></p>
-        <form action="/reg" method="POST">
+        <form action="/reg" method="POST" onsubmit="return reg_verify()">
             <p class="row"><label class="label_input">用户名</label><input type="text" id="username" name="username" class="text_field"/></p>
             <p class="row"><label class="label_input">密码</label><input type="password" id="password" name="password" class="text_field"/></p>
-            <p class="row"><label class="label_input">确认密码</label><input type="password" id="password1" class="text_field"/></p>
+            <p class="row"><label class="label_input">确认密码</label><input type="password" id="password1" name="password1" class="text_field"/></p>
             <p class="row"><label class="label_input">手机号</label><input type="text" id="phone" name="phone" class="text_field"/></p>
             <p class="row"><label class="label_input">邮箱</label><input type="email" id="email" name="email" class="text_field"/></p>
             <div id="reg_control">
