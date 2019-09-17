@@ -20,6 +20,8 @@ def home_find():
     
     '''
     username = session.get("username")
+    if not username:
+        return redirect('/login')
     if request.method == "GET":
         return render_template("home.html", username=username)
     elif request.method == "POST":
@@ -49,6 +51,8 @@ def home_add():
     
     '''
     username = session.get("username")
+    if not username:
+        return redirect('/login')
     if request.method == "GET":
         return render_template("home_add.html", username=username)
     elif request.method == "POST":
@@ -72,6 +76,8 @@ def home_upd():
     
     '''
     username = session.get("username")
+    if not username:
+        return redirect('/login')
     if request.method == "GET":
         return render_template("home_upd.html", username=username)
     elif request.method == "POST":
@@ -97,6 +103,8 @@ def home_del():
     
     '''
     username = session.get("username")
+    if not username:
+        return redirect('/login')
     if request.method == "GET":
         return render_template("home_del.html", username=username)
     elif request.method == "POST":
