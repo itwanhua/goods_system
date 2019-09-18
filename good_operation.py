@@ -29,6 +29,16 @@ def get_byname(g):
     conn.close()
     return row
 
+def get_blurname(blur_name):
+    # 模糊名称查询
+    conn = pymysql.Connect(host="localhost", user="wh", passwd="wh123", db="goodsdb")
+    cur = conn.cursor()
+    sql = "select * from good where gname like '%%{}%%'".format(blur_name)
+    cur.execute(sql)
+    row = cur.fetchall()
+    conn.close()
+    return row
+
 def add_good(g):
     conn = pymysql.Connect(host="localhost", user="wh", passwd="wh123", db="goodsdb")
     cur = conn.cursor()
@@ -52,10 +62,27 @@ def update_good(g):
         conn.close()
 
 def delete_good(g):
+    '''
+    通过ID删除
+    '''
     conn = pymysql.Connect(host="localhost", user="wh", passwd="wh123", db="goodsdb")
     cur = conn.cursor()
     try:
         cur.execute("delete from good where gid = %s", (g.get_gid(), ))
+        conn.commit()
+    except:
+        conn.rollback()
+    finally:
+        conn.close()
+
+def delete_good_byname(g):
+    '''
+    通过名称删除
+    '''
+    conn = pymysql.Connect(host="localhost", user="wh", passwd="wh123", db="goodsdb")
+    cur = conn.cursor()
+    try:
+        cur.execute("delete from good where gname = %s", (g.get_gname(), ))
         conn.commit()
     except:
         conn.rollback()
