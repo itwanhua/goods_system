@@ -34,12 +34,15 @@ def home_find():
             g.set_gid(w)
             gs = good_operation.get_byid(g)
             gs = (gs, )
-
-        else:
+        elif f == "get_byname":
             g = goods.good()
             g.set_gname(w)
             gs = good_operation.get_byname(g)
             gs = (gs, )
+
+        elif f == "get_blurname":
+            gs = good_operation.get_blurname(w)
+
         return render_template("home.html", gs=gs, username=username)
 
 
@@ -63,6 +66,17 @@ def home_add():
         g.set_gname(gname)
         g.set_gprice(gprice)
         g.set_gnum(gnums)
+
+        # 若数据库中该商品名已存在，则修改商品价格并在原库存上加上新增数量
+        g_tmp = good_operation.get_byname(g)
+        if g_tmp:
+            g.set_gnum(int(g.get_gnum()) + (g_tmp[3]))
+            g.set_gid(g_tmp[0])
+            good_operation.update_good(g)
+            gs = good_operation.get_byname(g)
+            gs = (gs, )
+            return render_template("home_add.html", gs = gs, username=username)
+
         good_operation.add_good(g)
         gs = good_operation.get_byname(g)
         gs = (gs, )
@@ -108,13 +122,24 @@ def home_del():
     if request.method == "GET":
         return render_template("home_del.html", username=username)
     elif request.method == "POST":
-        gid = request.form.get("gid")
-        g = goods.good()
-        g.set_gid(gid)
-        gs = good_operation.get_byid(g)
-        good_operation.delete_good(g)
-        gs = (gs, )
-        return render_template("home_del.html", gs = gs, username=username)
+        f = request.form.get("selected")
+        w = request.form.get("way")
+        print(f, w)
+
+        if f == "get_byid":
+            g = goods.good()
+            g.set_gid(w)
+            gs = good_operation.get_byid(g)
+            good_operation.delete_good(g)
+            gs = (gs, )
+            return render_template("home_del.html", gs = gs, username=username)
+        elif f == "get_byname":
+            g = goods.good()
+            g.set_gname(w)
+            gs = good_operation.get_byname(g)
+            good_operation.delete_good_byname(g)
+            gs = (gs, )
+            return render_template("home_del.html", gs = gs, username=username)
 
 
 @app.route("/login", methods=["GET", "POST"])
