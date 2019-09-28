@@ -22,4 +22,12 @@ def user_reg(username, password, phone, email):
     finally:
         conn.close()
 
+def reg_username_check(username):
+    conn = pymysql.Connect(host="localhost", user="wh", passwd="wh123", db="goodsdb")
+    cur = conn.cursor()
+    cur.execute("select * from users where uname = %s", (username, ))
+    row = cur.rowcount
+    conn.close()
+    return row
+
 
