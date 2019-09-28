@@ -1,8 +1,8 @@
 #!/etc/bin/python3
 # -*- coding: utf-8 -*-
 
-import os
-from flask import Flask, render_template, request, redirect, session
+import os, re
+from flask import Flask, render_template, request, redirect, session, abort, Response
 import good_operation, goods, users
 
 app = Flask(__name__)
@@ -124,7 +124,6 @@ def home_del():
     elif request.method == "POST":
         f = request.form.get("selected")
         w = request.form.get("way")
-        print(f, w)
 
         if f == "get_byid":
             g = goods.good()
@@ -163,12 +162,31 @@ def reg():
     elif request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
+        password1 = request.form.get("password1")
         phone = request.form.get("phone")
         email = request.form.get("email")
-        print(username, password, phone, email)
+        print(username, password, password1, phone, email)
+
+        if not (username and username.strip() and password and password1 and phone and email):
+            return render_template("reg.html", feedback="信息不完整！")
+        if users.reg_username_check(username):
+            print(users.reg_username_check(username))
+            abort(Response("用户名已存在！"))
+        if not re.fullmatch("[a-zA-Z0-9_]{4,20}", username):
+            abort(Response("用户名不合法！"))
+        if not (len(password) >= 6 and len(password) <= 15 and password1 == password):
+            abort(Response("密码错误！"))
+        if not re.fullmatch(r"^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$", email):
+            abort(Response("邮箱格式有误！"))
+
         users.user_reg(username, password, phone, email)
         return render_template("reg.html", feedback="注册成功！")
 
+@app.route("/check_username", methods=["GET"])
+def check_username():
+    username = request.args.get("username")
+    code = users.reg_username_check(username)
+    return {"err": code}
 
 
 if __name__ == "__main__":
