@@ -1,12 +1,12 @@
 #!/etc/bin/python3
 # -*- coding: utf-8 -*-
 
-import pymysql
 import goods
+from connect_db import get_conn
 
 
 def get_all():
-    conn = pymysql.Connect(host="localhost", user="wh", passwd="wh123", db="goodsdb")
+    conn = get_conn()
     cur = conn.cursor()
     cur.execute("select * from good")
     rows = cur.fetchall()
@@ -14,7 +14,7 @@ def get_all():
     return rows
 
 def get_byid(g):
-    conn = pymysql.Connect(host="localhost", user="wh", passwd="wh123", db="goodsdb")
+    conn = get_conn()
     cur = conn.cursor()
     cur.execute("select * from good where gid = %s", (g.get_gid(), ))
     row = cur.fetchone()
@@ -22,7 +22,7 @@ def get_byid(g):
     return row
 
 def get_byname(g):
-    conn = pymysql.Connect(host="localhost", user="wh", passwd="wh123", db="goodsdb")
+    conn = get_conn()
     cur = conn.cursor()
     cur.execute("select * from good where gname = %s", (g.get_gname(), ))
     row = cur.fetchone()
@@ -31,7 +31,7 @@ def get_byname(g):
 
 def get_blurname(blur_name):
     # 模糊名称查询
-    conn = pymysql.Connect(host="localhost", user="wh", passwd="wh123", db="goodsdb")
+    conn = get_conn()
     cur = conn.cursor()
     sql = "select * from good where gname like '%%{}%%'".format(blur_name)
     cur.execute(sql)
@@ -40,7 +40,7 @@ def get_blurname(blur_name):
     return row
 
 def add_good(g):
-    conn = pymysql.Connect(host="localhost", user="wh", passwd="wh123", db="goodsdb")
+    conn = get_conn()
     cur = conn.cursor()
     try:
         cur.execute("insert into good values(null, %s, %s, %s)", (g.get_gname(), g.get_gprice(), g.get_gnum(), ))
@@ -51,7 +51,7 @@ def add_good(g):
         conn.close()
 
 def update_good(g):
-    conn = pymysql.Connect(host="localhost", user="wh", passwd="wh123", db="goodsdb")
+    conn = get_conn()
     cur = conn.cursor()
     try:
         cur.execute("update good set gname = %s, gprice = %s, gnum = %s where gid = %s", (g.get_gname(), g.get_gprice(), g.get_gnum(), g.get_gid(), ))
@@ -65,7 +65,7 @@ def delete_good(g):
     '''
     通过ID删除
     '''
-    conn = pymysql.Connect(host="localhost", user="wh", passwd="wh123", db="goodsdb")
+    conn = get_conn()
     cur = conn.cursor()
     try:
         cur.execute("delete from good where gid = %s", (g.get_gid(), ))
@@ -79,7 +79,7 @@ def delete_good_byname(g):
     '''
     通过名称删除
     '''
-    conn = pymysql.Connect(host="localhost", user="wh", passwd="wh123", db="goodsdb")
+    conn = get_conn()
     cur = conn.cursor()
     try:
         cur.execute("delete from good where gname = %s", (g.get_gname(), ))

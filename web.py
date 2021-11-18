@@ -1,9 +1,11 @@
 #!/etc/bin/python3
 # -*- coding: utf-8 -*-
 
+import json
 import os, re
 from flask import Flask, render_template, request, redirect, session, abort, Response
 import good_operation, goods, users
+from connect_db import get_conn
 
 app = Flask(__name__)
 app.secret_key = os.urandom(16)
@@ -164,10 +166,10 @@ def reg():
         password = request.form.get("password")
         password1 = request.form.get("password1")
         phone = request.form.get("phone")
-        email = request.form.get("email")
+        email = request.form.get("email", '')
         print(username, password, password1, phone, email)
 
-        if not (username and username.strip() and password and password1 and phone and email):
+        if not (username and username.strip() and password and password1 and phone):
             return render_template("reg.html", feedback="信息不完整！")
         if users.reg_username_check(username):
             print(users.reg_username_check(username))
@@ -176,8 +178,8 @@ def reg():
             abort(Response("用户名不合法！"))
         if not (len(password) >= 6 and len(password) <= 15 and password1 == password):
             abort(Response("密码错误！"))
-        if not re.fullmatch(r"^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$", email):
-            abort(Response("邮箱格式有误！"))
+        # if not re.fullmatch(r"^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$", email):
+        #     abort(Response("邮箱格式有误！"))
 
         users.user_reg(username, password, phone, email)
         return render_template("reg.html", feedback="注册成功！")
@@ -186,8 +188,34 @@ def reg():
 def check_username():
     username = request.args.get("username")
     code = users.reg_username_check(username)
-    return {"err": code}
+    return json.dumps({"err": code})
+
+
+def init_table():
+    conn = get_conn()
+    sql1 = """
+        CREATE TABLE IF NOT EXISTS users (
+            `uname` VARCHAR(40) NOT NULL, 
+            `password` VARCHAR(40) NOT NULL, 
+            `phone` VARCHAR(40), 
+            `email` VARCHAR(40), 
+            PRIMARY KEY ( `uname` ) 
+        )ENGINE=InnoDB DEFAULT CHARSET=utf8;"""
+    sql2 = """
+        CREATE TABLE IF NOT EXISTS good (
+            `gid` VARCHAR(40) NOT NULL, 
+            `gname` VARCHAR(100) NOT NULL, 
+            `gprice` FLOAT, 
+            `gnum` INT, 
+            PRIMARY KEY ( `gid` ) 
+        )ENGINE=InnoDB DEFAULT CHARSET=utf8;"""
+    cur = conn.cursor()
+    cur.execute(sql1)
+    cur.execute(sql2)
+    conn.commit()
+    conn.close()
 
 
 if __name__ == "__main__":
+    init_table()
     app.run(port="80", debug="True")

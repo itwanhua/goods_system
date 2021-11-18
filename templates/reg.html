@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <canvas id="canvas" style="position: absolute; z-index: 0"></canvas>
+{#    <canvas id="canvas" style="position: absolute; z-index: 0"></canvas>#}
     <div id="reg_frame">
         <p id="image_logo"><img src="../static/images/title.jpg" alt="Logo"></p>
         <form action="/reg" method="POST">
@@ -19,7 +19,7 @@
             <p class="row"><label class="label_input">密码</label><input type="password" id="password" name="password" class="text_field"/></p>
             <p class="row"><label class="label_input">确认密码</label><input type="password" id="password1" name="password1" class="text_field"/></p>
             <p class="row"><label class="label_input">手机号</label><input type="text" id="phone" name="phone" class="text_field"/></p>
-            <p class="row"><label class="label_input">邮箱</label><input type="email" id="email" name="email" class="text_field"/></p>
+{#            <p class="row"><label class="label_input">邮箱</label><input type="email" id="email" name="email" class="text_field"/></p>#}
             <div id="reg_control">
                 <input type="submit" id="btn_reg" value="注册"/>
                 <p class="feedback">{{ feedback }}</p>
@@ -30,7 +30,7 @@
         
     </div>
 
-    <script src="{{url_for('static', filename='js/index.js')}}"></script>
+{#    <script src="{{url_for('static', filename='js/index.js')}}"></script>#}
 
 </body>
 
